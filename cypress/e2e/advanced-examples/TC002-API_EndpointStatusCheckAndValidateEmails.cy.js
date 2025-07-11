@@ -1,8 +1,10 @@
 /// <reference types="cypress" />
 
-describe('API endpoint status check and Validate user emails', () => {
+describe('TC002 - API endpoint status check and Validate user emails', () => {
+  const baseUrl = 'https://formatjsononline.com/api';
+
   it('check All endpoint responses', () => {
-    const baseUrl = 'https://formatjsononline.com/api';
+    //const baseUrl = 'https://formatjsononline.com/api';
     const endpoints = ['/users', '/users/usr_1', '/users/stats'];
 
     endpoints.forEach(endpoint => {
@@ -21,7 +23,7 @@ describe('API endpoint status check and Validate user emails', () => {
       'mike.johnson@example.com',
     ];
 
-    cy.request('https://formatjsononline.com/api/users').then(response => {
+    cy.request(baseUrl + '/users').then(response => {
       expect(response.status).to.eq(200);
       expect(response.body).to.exist;
       expect(response.body.data.users[2]).to.have.property(

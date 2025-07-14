@@ -24,7 +24,7 @@ describe('TC004 - Saucedemo verify login using different credentials', () => {
     loginPage.errorCircleIcons().should('be.visible').and('have.length', 2);
   });
 
-  it.only(`Login using: ${standardUser} as a test user and verify error message`, () => {
+  it(`Login using: ${standardUser} as a test user and verify error message`, () => {
     loginPage.getDataQA(CONST_VAR.Username).type(standardUser);
     loginPage.getDataQA(CONST_VAR.Password).type(password);
     loginPage.getDataQA(CONST_VAR.LoginButton).click();

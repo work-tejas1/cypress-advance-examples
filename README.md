@@ -8,3 +8,8 @@
 4. Item 4: `TC003 - POST_ToCreateRegisterUserAccountAndVerify` = Create user and verify // Added Faker.js
    1. Item TBD
    2. Item TBD
+5. Item 5: `TC004 - Saucedemo verify login using different credentials` =
+   - Introduces a new E2E test for verifying login with different credentials on Saucedemo, including use
+     fixtures and custom commands.
+   - Adds _LoginPage and Constants page objects,_ updates Cypress config for baseUrl and viewport, and implements a _custom logoutSession command._
+   - Added custom code which hides XHR/request logs in the Cypress UI for cleaner output.

@@ -1,9 +1,10 @@
-const { defineConfig } = require("cypress");
+const { defineConfig } = require('cypress');
 
 module.exports = defineConfig({
   e2e: {
-    setupNodeEvents(on, config) {
-      // implement node event listeners here
-    },
+    baseUrl: 'https://www.saucedemo.com',
+    screenshotOnRunFailure: true, // Auto-screenshots on failures
+    viewportWidth: 1080, // Browser width (px)
+    viewportHeight: 720, // Browser height (px)
   },
 });

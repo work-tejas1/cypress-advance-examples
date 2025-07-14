@@ -7,19 +7,23 @@
 // commands please read more here:
 // https://on.cypress.io/custom-commands
 // ***********************************************
-//
-//
-// -- This is a parent command --
-// Cypress.Commands.add('login', (email, password) => { ... })
-//
-//
-// -- This is a child command --
-// Cypress.Commands.add('drag', { prevSubject: 'element'}, (subject, options) => { ... })
-//
-//
-// -- This is a dual command --
-// Cypress.Commands.add('dismiss', { prevSubject: 'optional'}, (subject, options) => { ... })
-//
-//
-// -- This will overwrite an existing command --
-// Cypress.Commands.overwrite('visit', (originalFn, url, options) => { ... })
+
+import LoginPage from '../support/pageObjects/LoginPage';
+import { CONST_VAR } from '../support/pageObjects/Constants';
+const loginPage = new LoginPage();
+
+Cypress.Commands.add('logoutSession', () => {
+  Cypress.log({
+    name: 'Logout_Session',
+    displayName:
+      'Logout Session. Clear cookies and local storage, visit login page',
+  });
+  cy.clearCookies({ log: false });
+  cy.clearLocalStorage({ log: false });
+  cy.reload({ log: false });
+  loginPage
+    .getDataQA(CONST_VAR.LoginButton)
+    .should('be.visible')
+    .and('not.be.disabled');
+  cy.log('User is logged out');
+});
